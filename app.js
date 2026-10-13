@@ -1,11 +1,11 @@
 // Prices and calculations use integer centavos, never floating-point peso arithmetic.
 const products = [
-  { id: 'pandesal', name: 'Pandesal (pack of 5)', price: 2500, icon: '🥖' },
-  { id: 'ensaymada', name: 'Ensaymada', price: 2000, icon: '🥐' },
-  { id: 'spanish-bread', name: 'Spanish Bread', price: 1500, icon: '🍞' },
-  { id: 'cupcake', name: 'Chocolate Cupcake', price: 3000, icon: '🧁' },
-  { id: 'loaf', name: 'Loaf Bread', price: 5500, icon: '🍞' },
-  { id: 'coffee', name: 'Brewed Coffee (cup)', price: 2500, icon: '☕' },
+  { id: 'pandesal', name: 'Pandesal (pack of 5)', price: 2500 },
+  { id: 'ensaymada', name: 'Ensaymada', price: 2000 },
+  { id: 'spanish-bread', name: 'Spanish Bread', price: 1500 },
+  { id: 'cupcake', name: 'Chocolate Cupcake', price: 3000 },
+  { id: 'loaf', name: 'Loaf Bread', price: 5500 },
+  { id: 'coffee', name: 'Brewed Coffee (cup)', price: 2500 },
 ];
 
 function pesos(centavos) {
@@ -64,7 +64,7 @@ if (typeof document !== 'undefined') {
 
   grid.innerHTML = products.map(product => `
     <article class="product-card">
-      <span class="product-icon" aria-hidden="true">${product.icon}</span>
+      <div class="product-photo"><img src="assets/products/${product.id}.jpg" alt="" loading="lazy" decoding="async"></div>
       <h3>${product.name}</h3>
       <div class="product-bottom"><span class="price">${pesos(product.price)}</span>
         <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${product.name}">+ Add item</button>

@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#f7f8f5">
   <title>Campus Bakery — Point of Sale</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="hero.css">
   <script src="app.js" defer></script>
 </head>
 <body>
@@ -16,7 +17,25 @@
     </header>
 
     <main>
-      <div class="page-intro"><div><p class="eyebrow">CAMPUS BAKERY · COUNTER</p><h1>New order<span class="accent">.</span></h1><p class="muted">Choose something good. We'll take care of the rest.</p></div><span class="session-tag">● &nbsp;Ready for orders</span></div>
+      <section class="hero" aria-labelledby="hero-heading">
+        <div class="hero-copy">
+          <p class="eyebrow">FRESH FROM THE CAMPUS OVEN</p>
+          <h1 id="hero-heading">Good things, one order at a time<span class="accent">.</span></h1>
+          <p class="hero-description">Bread, pastries, and a little coffee for the moments between classes. Choose a favorite to begin a new order.</p>
+          <div class="hero-actions">
+            <a class="hero-cta" href="#catalog-heading">Browse the menu <span aria-hidden="true">↗</span></a>
+            <span class="session-tag">● &nbsp;Ready for orders</span>
+          </div>
+        </div>
+        <div class="hero-scene" aria-hidden="true">
+          <span class="hero-halo"></span>
+          <span class="hero-spark hero-spark-one">✳</span>
+          <span class="hero-spark hero-spark-two">✳</span>
+          <figure class="hero-tile hero-tile-main"><img src="assets/products/pandesal.jpg" alt="" fetchpriority="high"></figure>
+          <figure class="hero-tile hero-tile-ensaymada"><img src="assets/products/ensaymada.jpg" alt=""></figure>
+          <figure class="hero-tile hero-tile-coffee"><img src="assets/products/coffee.jpg" alt=""></figure>
+        </div>
+      </section>
       <div class="workspace">
         <section class="catalog" aria-labelledby="catalog-heading">
           <div class="section-heading"><div><p class="eyebrow">01 / MENU</p><h2 id="catalog-heading">The bakery shelf</h2></div><span class="section-meta">6 everyday favorites</span></div>
