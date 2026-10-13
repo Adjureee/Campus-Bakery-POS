@@ -28,19 +28,28 @@
           <p id="feedback" class="feedback" role="status" aria-live="polite" hidden></p>
           <div id="cart" class="cart" aria-live="polite"></div>
           <div class="total-line"><span>Total due</span><strong id="total">₱0.00</strong></div>
-          <form id="payment-form" novalidate>
-            <label for="cash">Cash paid <span class="required">*</span></label>
-            <div class="input-wrap"><span aria-hidden="true">₱</span><input id="cash" name="cash" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off" aria-describedby="cash-hint payment-error"></div>
-            <p id="cash-hint" class="hint">Enter the amount received from the customer.</p>
-            <p id="payment-error" class="error" role="alert" hidden></p>
-            <button class="primary-button" id="checkout" type="submit">Confirm payment <span aria-hidden="true">→</span></button>
-          </form>
-          <div id="receipt" class="receipt" aria-live="polite" hidden></div>
-          <button id="new-transaction" class="secondary-button" type="button" hidden>↻ &nbsp; New transaction</button>
+          <button class="primary-button" id="open-payment" type="button">Review &amp; pay <span aria-hidden="true">→</span></button>
           <p class="panel-footnote">Made for the little moments between classes.</p>
         </section>
       </div>
     </main>
+    <dialog id="transaction-dialog" class="transaction-dialog" aria-labelledby="dialog-heading">
+      <div class="dialog-header"><div><p class="eyebrow">03 / CHECKOUT</p><h2 id="dialog-heading">Complete your order</h2></div><button id="close-dialog" class="close-button" type="button" aria-label="Close transaction">×</button></div>
+      <div id="payment-step">
+        <p class="dialog-subtitle">Review your items before accepting payment.</p>
+        <div id="review-items" class="review-items"></div>
+        <div class="dialog-total"><span>Total due</span><strong id="review-total">₱0.00</strong></div>
+        <form id="payment-form" novalidate>
+          <label for="cash">Cash paid <span class="required">*</span></label>
+          <div class="input-wrap"><span aria-hidden="true">₱</span><input id="cash" name="cash" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off" aria-describedby="cash-hint payment-error"></div>
+          <p id="cash-hint" class="hint">Enter the amount received from the customer.</p>
+          <p id="payment-error" class="error" role="alert" hidden></p>
+          <button class="primary-button" id="checkout" type="submit">Confirm payment <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+      <div id="receipt" class="receipt" aria-live="polite" hidden></div>
+      <button id="new-transaction" class="secondary-button" type="button" hidden>↻ &nbsp; New transaction</button>
+    </dialog>
     <footer class="site-footer"><span>Campus Bakery POS</span><span>IT 415 · Scenario 2</span></footer>
   </div>
 </body>

@@ -52,8 +52,15 @@ if (typeof document !== 'undefined') {
   const feedback = byId('feedback');
   const receiptView = byId('receipt');
   const newButton = byId('new-transaction');
+  const dialog = byId('transaction-dialog');
+  const openPayment = byId('open-payment');
+  const closeDialog = byId('close-dialog');
+  const paymentStep = byId('payment-step');
+  const reviewItems = byId('review-items');
+  const reviewTotal = byId('review-total');
   let cart = {};
   let receipt = null;
+  let resetting = false;
 
   grid.innerHTML = products.map(product => `
     <article class="product-card">
@@ -83,6 +90,7 @@ if (typeof document !== 'undefined') {
     const itemCount = lines.reduce((sum, line) => sum + line.quantity, 0);
     count.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
     totalView.textContent = pesos(orderTotal(lines));
+    openPayment.textContent = receipt ? 'View receipt →' : 'Review & pay →';
     cartView.innerHTML = lines.length ? lines.map(line => `
       <div class="cart-row">
         <div><h3>${line.name}</h3><p class="unit-price">${pesos(line.price)} each</p>
@@ -97,6 +105,7 @@ if (typeof document !== 'undefined') {
     grid.querySelectorAll('[data-add]').forEach(button => { button.disabled = Boolean(receipt); });
     cash.disabled = Boolean(receipt);
     checkout.disabled = Boolean(receipt);
+    paymentStep.hidden = Boolean(receipt);
     newButton.hidden = !receipt;
   }
 
@@ -131,6 +140,35 @@ if (typeof document !== 'undefined') {
     }
   });
 
+  openPayment.addEventListener('click', () => {
+    if (!receipt) {
+      const lines = orderLines(cart);
+      if (!lines.length) {
+        message('Add an item before confirming payment.', true);
+        return;
+      }
+      message();
+      reviewItems.innerHTML = lines.map(line => `<div class="receipt-row"><span>${line.quantity} × ${line.name}</span><strong>${pesos(line.subtotal)}</strong></div>`).join('');
+      reviewTotal.textContent = pesos(orderTotal(lines));
+    }
+    dialog.showModal();
+    if (!receipt) cash.focus();
+    else newButton.focus();
+  });
+
+  closeDialog.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    if (resetting) {
+      resetting = false;
+      grid.querySelector('[data-add]').focus();
+    } else if (!receipt) openPayment.focus();
+  });
+  // Once payment succeeds, Escape/backdrop dismissal must not hide the only reset control.
+  dialog.addEventListener('cancel', event => { if (receipt) event.preventDefault(); });
+  dialog.addEventListener('click', event => {
+    if (!receipt && event.target === dialog) dialog.close();
+  });
+
   cash.addEventListener('input', () => paymentError());
   form.addEventListener('submit', event => {
     event.preventDefault();
@@ -138,6 +176,7 @@ if (typeof document !== 'undefined') {
     const lines = orderLines(cart);
     if (!lines.length) {
       message('Add an item before confirming payment.', true);
+      dialog.close();
       return;
     }
     const total = orderTotal(lines);
@@ -157,8 +196,11 @@ if (typeof document !== 'undefined') {
       <div class="receipt-row"><span>Cash paid</span><strong>${pesos(receipt.paid)}</strong></div>
       <div class="receipt-row"><span>Change</span><strong>${pesos(receipt.change)}</strong></div>`;
     receiptView.hidden = false;
+    byId('dialog-heading').textContent = 'Payment complete';
+    closeDialog.hidden = true;
     message(`Payment successful. Change: ${pesos(receipt.change)}.`);
     render();
+    newButton.focus();
   });
 
   newButton.addEventListener('click', () => {
@@ -169,8 +211,11 @@ if (typeof document !== 'undefined') {
     receiptView.hidden = true;
     paymentError();
     message();
+    byId('dialog-heading').textContent = 'Complete your order';
+    closeDialog.hidden = false;
     render();
-    grid.querySelector('[data-add]').focus();
+    resetting = true;
+    dialog.close();
   });
   render();
 }
