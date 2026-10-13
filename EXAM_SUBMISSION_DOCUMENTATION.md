@@ -90,24 +90,24 @@ The exact prompts below were recorded at separate planning and implementation st
 
 # IX. GitHub and version control documentation
 
-**Repository:** [Adjureee/Campus-Bakery-POS](https://github.com/Adjureee/Campus-Bakery-POS)
-**Commit history:** [View all commits](https://github.com/Adjureee/Campus-Bakery-POS/commits/main)
+**Repository:** [HeraldxElevira/Campus-Bakery-POS](https://github.com/HeraldxElevira/Campus-Bakery-POS)
+**Commit history:** [View all commits](https://github.com/HeraldxElevira/Campus-Bakery-POS/commits/main)
 
 | Requirement | Verified evidence |
 |---|---|
 | Repository created | Public Campus Bakery POS repository contains the source files. |
-| Initial setup and basic interface | [`0646826` — Establish the bakery POS interface and fixed catalog](https://github.com/Adjureee/Campus-Bakery-POS/commit/0646826febe7cb71814af3398e4bb9422cc37fc0). |
-| Core ordering and computation | [`71add80` — Enable reliable bakery transactions with centavo-based payment](https://github.com/Adjureee/Campus-Bakery-POS/commit/71add80a8417956007d91908cf17d43297faa432). |
-| Validation and final improvements | [`f705865` — Make exam behavior verifiable and document the transaction workflow](https://github.com/Adjureee/Campus-Bakery-POS/commit/f705865c2459f53afae732d3dbc6ae7a6845587b). |
-| Checkout-dialog improvement | [`ce0df2f` — Keep checkout in view with a focused transaction dialog](https://github.com/Adjureee/Campus-Bakery-POS/commit/ce0df2fd1d2a70718522fcc1fd963c1bb513cb92). |
+| Initial setup and basic interface | [`0646826` — Establish the bakery POS interface and fixed catalog](https://github.com/HeraldxElevira/Campus-Bakery-POS/commit/0646826febe7cb71814af3398e4bb9422cc37fc0). |
+| Core ordering and computation | [`71add80` — Enable reliable bakery transactions with centavo-based payment](https://github.com/HeraldxElevira/Campus-Bakery-POS/commit/71add80a8417956007d91908cf17d43297faa432). |
+| Validation and final improvements | [`f705865` — Make exam behavior verifiable and document the transaction workflow](https://github.com/HeraldxElevira/Campus-Bakery-POS/commit/f705865c2459f53afae732d3dbc6ae7a6845587b). |
+| Checkout-dialog improvement | [`ce0df2f` — Keep checkout in view with a focused transaction dialog](https://github.com/HeraldxElevira/Campus-Bakery-POS/commit/ce0df2fd1d2a70718522fcc1fd963c1bb513cb92). |
 | Successful push and visible history | All four commits are visible on GitHub's `main` branch. |
-| Brief project documentation | [README.md](https://github.com/Adjureee/Campus-Bakery-POS/blob/main/README.md), [AI_USAGE.md](https://github.com/Adjureee/Campus-Bakery-POS/blob/main/AI_USAGE.md), and [TEST_CASES.md](https://github.com/Adjureee/Campus-Bakery-POS/blob/main/TEST_CASES.md) are present. |
+| Brief project documentation | [README.md](https://github.com/HeraldxElevira/Campus-Bakery-POS/blob/main/README.md), [AI_USAGE.md](https://github.com/HeraldxElevira/Campus-Bakery-POS/blob/main/AI_USAGE.md), and [TEST_CASES.md](https://github.com/HeraldxElevira/Campus-Bakery-POS/blob/main/TEST_CASES.md) are present. |
 
 # X. Submission documentation and checking guide
 
 ## Application and source code
 
-The [repository](https://github.com/Adjureee/Campus-Bakery-POS) contains `index.html`, `styles.css`, and `app.js`. Open `index.html` in a desktop browser. Run `node --test app.test.js` for catalog and calculation checks. The saved [test record](https://github.com/Adjureee/Campus-Bakery-POS/blob/main/TEST_CASES.md) reports four automated tests passing at its initial run and a browser walkthrough; rerun tests after any final edits.
+The [repository](https://github.com/HeraldxElevira/Campus-Bakery-POS) contains `index.html`, `styles.css`, and `app.js`. Open `index.html` in a desktop browser. Run `node --test app.test.js` for catalog and calculation checks. The saved [test record](https://github.com/HeraldxElevira/Campus-Bakery-POS/blob/main/TEST_CASES.md) reports four automated tests passing at its initial run and a browser walkthrough; rerun tests after any final edits.
 
 ## Main functionality to demonstrate
 
