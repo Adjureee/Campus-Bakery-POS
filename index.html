@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f5">
+  <title>Campus Bakery — Point of Sale</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✳</span><span>campus <strong>bakery.</strong><small>POINT OF SALE</small></span></div>
+      <span class="header-note">Freshly made, thoughtfully served.</span>
+    </header>
+
+    <main>
+      <div class="page-intro"><div><p class="eyebrow">CAMPUS BAKERY · COUNTER</p><h1>New order<span class="accent">.</span></h1><p class="muted">Choose something good. We'll take care of the rest.</p></div><span class="session-tag">● &nbsp;Ready for orders</span></div>
+      <div class="workspace">
+        <section class="catalog" aria-labelledby="catalog-heading">
+          <div class="section-heading"><div><p class="eyebrow">01 / MENU</p><h2 id="catalog-heading">The bakery shelf</h2></div><span class="section-meta">6 everyday favorites</span></div>
+          <div class="product-grid" id="products"></div>
+        </section>
+
+        <section class="order-panel" aria-labelledby="order-heading">
+          <div class="order-header"><div><p class="eyebrow">02 / YOUR ORDER</p><h2 id="order-heading">Order summary</h2></div><span class="cart-count" id="cart-count">0 items</span></div>
+          <p id="feedback" class="feedback" role="status" aria-live="polite" hidden></p>
+          <div id="cart" class="cart" aria-live="polite"></div>
+          <div class="total-line"><span>Total due</span><strong id="total">₱0.00</strong></div>
+          <form id="payment-form" novalidate>
+            <label for="cash">Cash paid <span class="required">*</span></label>
+            <div class="input-wrap"><span aria-hidden="true">₱</span><input id="cash" name="cash" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" autocomplete="off" aria-describedby="cash-hint payment-error"></div>
+            <p id="cash-hint" class="hint">Enter the amount received from the customer.</p>
+            <p id="payment-error" class="error" role="alert" hidden></p>
+            <button class="primary-button" id="checkout" type="submit">Confirm payment <span aria-hidden="true">→</span></button>
+          </form>
+          <div id="receipt" class="receipt" aria-live="polite" hidden></div>
+          <button id="new-transaction" class="secondary-button" type="button" hidden>↻ &nbsp; New transaction</button>
+          <p class="panel-footnote">Made for the little moments between classes.</p>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer"><span>Campus Bakery POS</span><span>IT 415 · Scenario 2</span></footer>
+  </div>
+</body>
+</html>
