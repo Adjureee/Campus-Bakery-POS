@@ -80,7 +80,8 @@ if (typeof document !== 'undefined') {
 
   function render() {
     const lines = orderLines(cart);
-    count.textContent = `${lines.reduce((sum, line) => sum + line.quantity, 0)} items`;
+    const itemCount = lines.reduce((sum, line) => sum + line.quantity, 0);
+    count.textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
     totalView.textContent = pesos(orderTotal(lines));
     cartView.innerHTML = lines.length ? lines.map(line => `
       <div class="cart-row">
@@ -121,6 +122,13 @@ if (typeof document !== 'undefined') {
     paymentError();
     message('Order updated.');
     render();
+    // Re-render replaces buttons; return keyboard focus to the updated control.
+    if (button.dataset.remove) grid.querySelector(`[data-add="${id}"]`).focus();
+    else {
+      const action = button.dataset.increase ? 'increase' : 'decrease';
+      const target = cartView.querySelector(`[data-${action}="${id}"]`);
+      (target.disabled ? cartView.querySelector(`[data-increase="${id}"]`) : target).focus();
+    }
   });
 
   cash.addEventListener('input', () => paymentError());
